@@ -6,6 +6,8 @@ Get-ADGroup -Filter 'SamAccountName -like "*randomgstring"' | Select -Exp Name |
 Get-ADComputer -Filter 'SamAccountName -like "randomstring*"' | Select -Exp Name | Out-File C:\output.txt\
 Get-ADComputer -Filter 'SamAccountName -like "*randomstring"' | Select -Exp Name | Out-File C:\output.txt\
 
+#Script that runs against a username to get an list of Groups user is part of. 
+Get-aduser username -property MemberOf | % {$_.MemberOf | Get-AdGroup | select Name | sort name}
 
 #Run a Function against a list containing IP's to grab DNS host name info.
 Get-Content C:\audit.txt | Get-ComputerNameByIP
@@ -67,7 +69,6 @@ function Get-ComputerNameByIP {
     END {
     }
 }
-
 
 #Get Logged in user based on IP or computer name
 Function Get-LoggedInUser
