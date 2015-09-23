@@ -6,7 +6,7 @@
     foreach($DC in $DCs)
     {
       Connect-QADService $DC.Name
-      $result = Get-QADUser -Identity NATPAL\$user | Select LastLogon
+      $result = Get-QADUser -Identity DOMAIN\$user | Select LastLogon
       $customObj = [PSCustomObject] @{DC=$DC;LastLogon = $result}
       $output += $customObj
     }
