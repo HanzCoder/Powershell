@@ -39,5 +39,7 @@ foreach ($comp in $computers)
 		ForEach ($p in $proc) {
 	    	$temp = ($p.GetOwner()).User
 	  		if ($temp -eq $Username){
-			write-host "$Username is logged on $Computer"
-		}}}}
+			write-host "$Username is logged on $Computer"}
+			}
+		}
+	}
