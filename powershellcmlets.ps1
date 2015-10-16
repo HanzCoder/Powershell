@@ -46,6 +46,30 @@ Get-DistributionGroupMember -identity "testdl" | Export-Csv C:\MyFile.Csv\
 ##Obtain specific info from a CSV File and Export info to another CSV
 Import-CSV .\excel.csv | select column1, coulumn2, coulumn3, coulumn4 | Export-csv exceloutput.csv
 
+#Disables User accounts Accounts based of a text file
+Get-Content C:\users.txt | % { Disable-ADAccount -Identity $_ }
+
+#removing User from speicific AD group without confirmation
+Remove-ADGroupMember -Identity TestGroup -Members LabUser1 - Confirm:$false
+
+
+#Function used to monitor Inactive workstations
+Function Find-InactiveComputers {
+[CmdletBinding()]
+Param(
+  [int]$DaysOlderThan
+)
+$older = (Get-Date).AddDays(-$DaysOlderThan)
+Get-ADComputer -Filter { PasswordLastSet -lt $older } | select  Name, DistinguishedName
+}
+
+#Using the inactivity Funtion
+Find-InactiveComputers -DaysOlderThan 40
+
+
+#
+#
+
 ## Get Computer Host name By IPAddress
 function Get-ComputerNameByIP {
     param(
