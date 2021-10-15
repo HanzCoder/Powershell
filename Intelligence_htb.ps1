@@ -3,6 +3,7 @@ $days = @()
 1..12 | ForEach-Object { $months += $_.ToString("00") }
 1..31 | ForEach-Object { $days += $_.ToString("00") }
 
+#Enumerate URL for 2020-$month-$day.pdf files and download 
 foreach ($month in $months) {
     foreach ($day in $days) {
     $filename = "2020-$month-$day.pdf"
