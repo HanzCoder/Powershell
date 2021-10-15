@@ -24,7 +24,6 @@ $azimportcsv = @()
 $azfinalcsv = @()
 
 <#
-
 Yubico Auto configures keys if you're purchasing 1000+ keys
 My Solution : A massive USB Hub + Forloop which will detect any Yubikey plugged into the PC (ykman.exe list --serials)
 #>
