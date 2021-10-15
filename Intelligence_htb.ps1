@@ -1,4 +1,4 @@
-﻿$months = @()
+$months = @()
 $days = @()
 1..12 | ForEach-Object { $months += $_.ToString("00") }
 1..31 | ForEach-Object { $days += $_.ToString("00") }
@@ -12,7 +12,7 @@ foreach ($month in $months) {
     if($HTTP_Response -eq 200){(iwr -Uri "$url" ,$filename)}
     else{"File Doesn't Exist"}
     #clean up the http request by closing it.
-    If ($HTTP_Response -eq $null) { } 
-    Else { $HTTP_Response.Close() }
+    if ($HTTP_Request.GetResponse() -eq $null) { } 
+    else {$HTTP_Request.GetResponse().Close() }
     }
 }
