@@ -1,3 +1,2 @@
 # Powershell
-Powershell tools
-HelpFull Cmdlets for LVL1 Sysadmin stuff 
+Random Powershell tools I've written or stumbled upon throughout my lifetime from day 1 to Engineer
